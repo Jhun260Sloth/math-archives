@@ -1,0 +1,196 @@
+---
+const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Decorative top rule -->
+    <div class="top-rule">
+      <div class="top-rule__inner">
+        <span class="top-rule__line"></span>
+        <span class="top-rule__diamond">◆</span>
+        <span class="top-rule__line"></span>
+      </div>
+    </div>
+
+    <!-- Site nav -->
+    <nav class="site-nav">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="/">
+          <span class="site-nav__sigma">Σ</span>
+          <span class="site-nav__name">MathArchive</span>
+        </a>
+        <span class="site-nav__edition">BSEd Mathematics · Resource Library</span>
+      </div>
+    </nav>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span class="site-footer__mark">◆</span>
+        <p>BSEd Mathematics Archive · Philippine Normal University</p>
+        <p class="site-footer__sub">A curated academic resource library for mathematics education</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:      #0f1f3d;
+    --navy-mid:  #1a3360;
+    --navy-soft: #2a4a7f;
+    --gold:      #b8922a;
+    --gold-light:#d4a843;
+    --cream:     #faf8f3;
+    --cream-dark:#f0ece0;
+    --paper:     #fffef9;
+    --ink:       #1a1a2e;
+    --ink-mid:   #3d3d5c;
+    --ink-muted: #6b6b8a;
+    --rule:      #d6cfbc;
+    --border:    #ddd8cc;
+    --shadow:    rgba(15, 31, 61, 0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    /* Subtle dot-grid background */
+    background-image: radial-gradient(circle, #c8c0aa 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-attachment: fixed;
+  }
+
+  /* ── Top rule ─────────────────────────────────────────────────────────── */
+  .top-rule {
+    background: var(--navy);
+    height: 4px;
+  }
+  .top-rule__inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+  }
+  .top-rule__line {
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .top-rule__diamond {
+    color: var(--gold);
+    font-size: 0.5rem;
+    opacity: 0.8;
+  }
+
+  /* ── Nav ──────────────────────────────────────────────────────────────── */
+  .site-nav {
+    background: var(--navy);
+    border-bottom: 2px solid var(--gold);
+  }
+  .site-nav__inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .site-nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--cream);
+  }
+  .site-nav__sigma {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .site-nav__name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+  }
+  .site-nav__edition {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ── Main container ───────────────────────────────────────────────────── */
+  .container {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 5rem;
+  }
+
+  /* ── Footer ───────────────────────────────────────────────────────────── */
+  .site-footer {
+    background: var(--navy);
+    border-top: 2px solid var(--gold);
+    padding: 2.5rem 2rem;
+  }
+  .site-footer__inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .site-footer__mark {
+    display: block;
+    color: var(--gold);
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+  }
+  .site-footer p {
+    color: rgba(250,248,243,0.75);
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .site-footer__sub {
+    font-style: italic;
+    font-size: 0.85rem !important;
+    opacity: 0.6;
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .site-nav__inner { padding: 0.875rem 1rem; }
+    .site-nav__edition { display: none; }
+    .container { padding: 2rem 1rem 4rem; }
+  }
+</style>
