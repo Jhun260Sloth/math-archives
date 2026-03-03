@@ -17,6 +17,14 @@ import { archives, categories, years } from "../data/archives.js";
       A curated repository of academic resources, reference materials, and pedagogical guides
       spanning the full four-year BSEd Mathematics curriculum.
     </p>
+
+    <button class="hero__team-btn" id="open-team-modal" type="button">
+      <svg class="hero__team-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-5.356-3.712M9 20H4v-2a4 4 0 015.356-3.712M15 7a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0zm-18 0a3 3 0 116 0 3 3 0 01-6 0z"/>
+      </svg>
+      Meet the Team
+    </button>
+
     <div class="hero__stats">
       <div class="hero__stat">
         <span class="hero__stat-num">{archives.length}</span>
@@ -49,12 +57,28 @@ import { archives, categories, years } from "../data/archives.js";
       <span class="results-count" id="results-count">{archives.length} entries</span>
     </div>
 
+    <!-- Search bar -->
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        placeholder="Search by title or topic…"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="search-clear" id="search-clear" aria-label="Clear search" style="display:none;">✕</button>
+    </div>
+
     <div class="filter-grid">
+      <!-- Year Level -->
       <div class="filter-group">
         <span class="filter-label">
           <span class="filter-label__icon">◈</span>
           Year Level
         </span>
+        <!-- Desktop: chips -->
         <div class="filter-chips" id="year-filters">
           {years.map((y) => (
             <button
@@ -65,13 +89,24 @@ import { archives, categories, years } from "../data/archives.js";
             </button>
           ))}
         </div>
+        <!-- Mobile: native select -->
+        <div class="filter-select-wrap">
+          <select id="year-select" class="filter-select" aria-label="Filter by year level">
+            {years.map((y) => (
+              <option value={y.id}>{y.label}</option>
+            ))}
+          </select>
+          <span class="filter-select__arrow" aria-hidden="true">&#9662;</span>
+        </div>
       </div>
 
+      <!-- Discipline -->
       <div class="filter-group">
         <span class="filter-label">
           <span class="filter-label__icon">◈</span>
           Discipline
         </span>
+        <!-- Desktop: chips -->
         <div class="filter-chips" id="category-filters">
           {categories.map((c) => (
             <button
@@ -82,6 +117,15 @@ import { archives, categories, years } from "../data/archives.js";
             </button>
           ))}
         </div>
+        <!-- Mobile: native select -->
+        <div class="filter-select-wrap">
+          <select id="cat-select" class="filter-select" aria-label="Filter by discipline">
+            {categories.map((c) => (
+              <option value={c.id}>{c.label}</option>
+            ))}
+          </select>
+          <span class="filter-select__arrow" aria-hidden="true">&#9662;</span>
+        </div>
       </div>
     </div>
   </section>
@@ -89,7 +133,12 @@ import { archives, categories, years } from "../data/archives.js";
   <!-- ── Card grid ─────────────────────────────────────────────────────── -->
   <section class="grid" id="archive-grid" aria-label="Archive entries">
     {archives.map((item) => (
-      <div class="card-wrapper" data-year={item.year} data-category={item.category}>
+      <div
+        class="card-wrapper"
+        data-year={item.year}
+        data-category={item.category}
+        data-search={`${item.title} ${item.description}`.toLowerCase()}
+      >
         <ArchiveCard {...item} />
       </div>
     ))}
@@ -100,23 +149,73 @@ import { archives, categories, years } from "../data/archives.js";
     No entries found for the selected filters.
   </p>
 
+  <!-- ── Contact divider ─────────────────────────────────────────────── -->
+  <div class="divider" aria-hidden="true" style="margin-top: 4rem;">
+    <span class="divider__line"></span>
+    <span class="divider__ornament">— § —</span>
+    <span class="divider__line"></span>
+  </div>
+
+  <!-- ── Messenger CTA ─────────────────────────────────────────────────── -->
+  <div class="contact-cta">
+    <div class="contact-cta__text">
+      <span class="contact-cta__eyebrow">Have a question or suggestion?</span>
+      <p class="contact-cta__desc">Reach out through Messenger and we'll get back to you.</p>
+    </div>
+    <a
+      href="https://m.me/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contact-cta__btn"
+    >
+      <svg class="contact-cta__btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.929 1.458 5.544 3.742 7.255V22l3.405-1.869c.909.252 1.871.387 2.853.387 5.523 0 10-4.145 10-9.275C22 6.145 17.523 2 12 2zm1.008 12.487l-2.548-2.718-4.972 2.718 5.473-5.808 2.609 2.718 4.91-2.718-5.472 5.808z"/>
+      </svg>
+      Message Us on Messenger
+    </a>
+  </div>
+
+  <!-- ── Team Modal ───────────────────────────────────────────────────────── -->
+  <div class="team-modal-overlay" id="team-modal" role="dialog" aria-modal="true" aria-label="Meet the Team" style="display:none;">
+    <div class="team-modal">
+      <div class="team-modal__header">
+        <div class="team-modal__header-left">
+          <span class="team-modal__eyebrow">&#10022; The People Behind It &#10022;</span>
+          <h2 class="team-modal__title">Meet the <em>Team</em></h2>
+        </div>
+        <button class="team-modal__close" id="close-team-modal" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="team-modal__rule"></div>
+      <div class="team-modal__grid" id="team-grid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </div>
+
 </BaseLayout>
 
 <script>
-  const yearBtns = document.querySelectorAll("[data-filter-year]");
-  const catBtns  = document.querySelectorAll("[data-filter-cat]");
-  const allCards = Array.from(document.querySelectorAll(".card-wrapper"));
-  const countEl  = document.getElementById("results-count");
-  const emptyEl  = document.getElementById("empty-state");
+  const yearBtns   = document.querySelectorAll("[data-filter-year]");
+  const catBtns    = document.querySelectorAll("[data-filter-cat]");
+  const yearSelect = document.getElementById("year-select");
+  const catSelect  = document.getElementById("cat-select");
+  const allCards   = Array.from(document.querySelectorAll(".card-wrapper"));
+  const countEl    = document.getElementById("results-count");
+  const emptyEl    = document.getElementById("empty-state");
+  const searchEl   = document.getElementById("search-input");
+  const clearBtn   = document.getElementById("search-clear");
 
-  let activeYear = "all";
-  let activeCat  = "all";
+  let activeYear  = "all";
+  let activeCat   = "all";
+  let searchQuery = "";
 
   function applyFilters() {
     let visible = 0;
     allCards.forEach((c) => {
-      const show = (activeYear === "all" || c.dataset.year === activeYear)
-                && (activeCat  === "all" || c.dataset.category === activeCat);
+      const yearOk   = activeYear === "all" || c.dataset.year === activeYear;
+      const catOk    = activeCat  === "all" || c.dataset.category === activeCat;
+      const searchOk = searchQuery === "" || c.dataset.search.includes(searchQuery);
+      const show = yearOk && catOk && searchOk;
       c.style.display = show ? "" : "none";
       if (show) visible++;
     });
@@ -124,11 +223,13 @@ import { archives, categories, years } from "../data/archives.js";
     emptyEl.style.display = visible === 0 ? "block" : "none";
   }
 
+  // ── Desktop chip buttons ──────────────────────────────────────────────────
   yearBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       yearBtns.forEach((b) => b.classList.remove("chip--active"));
       btn.classList.add("chip--active");
       activeYear = btn.dataset.filterYear;
+      if (yearSelect) yearSelect.value = activeYear;
       applyFilters();
     });
   });
@@ -138,8 +239,45 @@ import { archives, categories, years } from "../data/archives.js";
       catBtns.forEach((b) => b.classList.remove("chip--active"));
       btn.classList.add("chip--active");
       activeCat = btn.dataset.filterCat;
+      if (catSelect) catSelect.value = activeCat;
       applyFilters();
     });
+  });
+
+  // ── Mobile select dropdowns ───────────────────────────────────────────────
+  if (yearSelect) {
+    yearSelect.addEventListener("change", () => {
+      activeYear = yearSelect.value;
+      yearBtns.forEach((b) => {
+        b.classList.toggle("chip--active", b.dataset.filterYear === activeYear);
+      });
+      applyFilters();
+    });
+  }
+
+  if (catSelect) {
+    catSelect.addEventListener("change", () => {
+      activeCat = catSelect.value;
+      catBtns.forEach((b) => {
+        b.classList.toggle("chip--active", b.dataset.filterCat === activeCat);
+      });
+      applyFilters();
+    });
+  }
+
+  // ── Search ────────────────────────────────────────────────────────────────
+  searchEl.addEventListener("input", () => {
+    searchQuery = searchEl.value.trim().toLowerCase();
+    clearBtn.style.display = searchQuery ? "flex" : "none";
+    applyFilters();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    searchEl.value = "";
+    searchQuery = "";
+    clearBtn.style.display = "none";
+    searchEl.focus();
+    applyFilters();
   });
 
   applyFilters();
@@ -148,10 +286,13 @@ import { archives, categories, years } from "../data/archives.js";
 <style>
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* center horizontally */
+  justify-content: center;
   text-align: center;
-  padding: 3rem 1rem 2.5rem;
-  max-width: 760px;
-  margin: 0 auto 2rem;
+  padding: 4rem 1.5rem;
+  gap: 1.75rem;                 /* consistent vertical spacing */
 }
 .hero__eyebrow {
   display: flex;
@@ -368,6 +509,174 @@ import { archives, categories, years } from "../data/archives.js";
   display: block;
 }
 
+/* ── Search bar ──────────────────────────────────────────────────────────── */
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  font-size: 1.15rem;
+  color: var(--ink-muted);
+  pointer-events: none;
+  line-height: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search-input {
+  width: 100%;
+  padding: 0.65rem 2.5rem 0.65rem 2.4rem;
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--navy);
+  background: var(--cream);
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  color: var(--ink);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  -webkit-appearance: none;
+}
+.search-input::placeholder {
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.search-input:focus {
+  border-color: var(--gold);
+  border-bottom-color: var(--gold);
+  box-shadow: 0 2px 0 0 var(--gold);
+  background: var(--paper);
+}
+/* hide browser's native clear button */
+.search-input::-webkit-search-cancel-button { display: none; }
+.search-clear {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s ease, color 0.15s ease;
+  padding: 0;
+}
+.search-clear:hover {
+  background: var(--cream-dark);
+  color: var(--navy);
+}
+
+/* ── Select dropdowns (hidden on desktop, shown on mobile) ───────────────── */
+.filter-select-wrap {
+  display: none; /* hidden by default — shown only on mobile via media query */
+  position: relative;
+  width: 100%;
+}
+.filter-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.6rem 2.5rem 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--navy);
+  background: var(--cream);
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  color: var(--ink);
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  line-height: 1.5;
+}
+.filter-select:focus {
+  border-color: var(--gold);
+  border-bottom-color: var(--gold);
+  box-shadow: 0 2px 0 0 var(--gold);
+  background: var(--paper);
+}
+.filter-select__arrow {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--navy);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+/* ── Messenger CTA ───────────────────────────────────────────────────────── */
+.contact-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--navy);
+  padding: 2rem 2.5rem;
+  box-shadow: 0 2px 12px var(--shadow);
+  margin-top: 1rem;
+}
+.contact-cta__eyebrow {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+.contact-cta__desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  color: var(--ink-mid);
+  margin: 0;
+  line-height: 1.5;
+}
+.contact-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.75rem;
+  background: #0084ff;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+  box-shadow: 0 2px 10px rgba(0,132,255,0.3);
+  flex-shrink: 0;
+}
+.contact-cta__btn:hover {
+  background: #006edb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,132,255,0.35);
+}
+.contact-cta__btn:active { transform: translateY(0); }
+.contact-cta__btn-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
@@ -379,7 +688,189 @@ import { archives, categories, years } from "../data/archives.js";
   .filter-panel { padding: 1.25rem 1rem; }
   .filter-group { flex-direction: column; gap: 0.5rem; }
   .filter-label { min-width: unset; padding-top: 0; }
-  .chip { font-size: 0.85rem; }
+
+  /* On mobile: hide chips, show select dropdowns */
+  .filter-chips { display: none; }
+  .filter-select-wrap { display: block; }
+
   .grid { grid-template-columns: 1fr; gap: 1.25rem; }
+
+  .contact-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1.25rem;
+  }
+  .contact-cta__btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
+</style>
+
+<script>
+  const TEAM = [
+    { name: "Niuegen Pagala", role: "", img: "/pagala.png" },
+    { name: "Niuegen Pagala", role: "", img: "/pagala.png" },
+    { name: "Niuegen Pagala", role: "", img: "/pagala.png" },
+    { name: "Niuegen Pagala", role: "", img: "/pagala.png" },
+    { name: "Niuegen Pagala", role: "", img: "/pagala.png" },
+    { name: "Niuegen Pagala", role: "", img: "/pagala.png" }
+  ];
+  const PAL = [
+    ["#0f1f3d","#d4a843"],["#1a3360","#e8d5a3"],["#2a4a7f","#faf8f3"],
+    ["#1e3a5f","#c9a84c"],["#0d2137","#f0e0b0"],["#162d4a","#d4a843"],
+  ];
+  function ini(n){ return n.trim().split(/\s+/).map(w=>w[0]||"").join("").toUpperCase().slice(0,2)||"?"; }
+  function pal(i){ const idx=((i.charCodeAt(0)||0)+(i.charCodeAt(1)||0))%PAL.length; return PAL[idx]; }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  const grid = document.getElementById("team-grid");
+  TEAM.forEach(function(m,i){
+    const initials = ini(m.name);
+    const colors = pal(initials);
+    const card = document.createElement("div");
+    card.className = "team-card";
+    card.style.animationDelay = (i*0.07)+"s";
+    const av = m.img
+      ? '<img class="team-card__img" src="'+esc(m.img)+'" alt="'+esc(m.name)+'" loading="lazy" />'
+      : '<div class="team-card__initials" style="background:'+colors[0]+';color:'+colors[1]+';">'+esc(initials)+'</div>';
+    card.innerHTML =
+      '<div class="team-card__avatar-wrap">'+av+'</div>'+
+      '<div class="team-card__info">'+
+        '<span class="team-card__name">'+esc(m.name)+'</span>'+
+        '<span class="team-card__role">'+esc(m.role)+'</span>'+
+      '</div>';
+    grid.appendChild(card);
+  });
+
+  const modal    = document.getElementById("team-modal");
+  const openBtn  = document.getElementById("open-team-modal");
+  const closeBtn = document.getElementById("close-team-modal");
+  function openModal(){
+    modal.style.display="flex";
+    document.body.style.overflow="hidden";
+    setTimeout(function(){ modal.classList.add("team-modal-overlay--in"); },10);
+    closeBtn.focus();
+  }
+  function closeModal(){
+    modal.classList.remove("team-modal-overlay--in");
+    setTimeout(function(){ modal.style.display="none"; document.body.style.overflow=""; },280);
+  }
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
+</script>
+
+<style>
+.hero__team-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.15s ease;
+}
+.hero__team-btn:hover { background: var(--navy); color: var(--cream); transform: translateY(-1px); }
+.hero__team-btn-icon { width: 1rem; height: 1rem; flex-shrink: 0; }
+
+.team-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,18,35,0.72);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.team-modal-overlay--in { opacity: 1; }
+.team-modal {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 24px 64px rgba(10,18,35,0.35);
+  width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.28s ease;
+  border-radius: 2px;
+}
+.team-modal-overlay--in .team-modal { transform: translateY(0) scale(1); }
+.team-modal::-webkit-scrollbar { width: 5px; }
+.team-modal::-webkit-scrollbar-track { background: var(--cream); }
+.team-modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.team-modal__header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 1rem; padding: 1.75rem 2rem 1.25rem;
+}
+.team-modal__eyebrow {
+  display: block; font-family: 'DM Mono', monospace; font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+}
+.team-modal__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700; color: var(--navy); line-height: 1.1; margin: 0;
+}
+.team-modal__title em { font-style: italic; color: var(--gold); }
+.team-modal__close {
+  width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center;
+  background: none; border: 1px solid var(--border); border-radius: 50%; cursor: pointer;
+  color: var(--ink-muted); font-size: 0.7rem; flex-shrink: 0; margin-top: 0.25rem;
+  transition: all 0.15s ease;
+}
+.team-modal__close:hover { background: #fdecea; border-color: #f5c6c6; color: #c0392b; }
+.team-modal__rule {
+  height: 1px; margin: 0 2rem 1.75rem; opacity: 0.6;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rule) 60%, transparent 100%);
+}
+.team-modal__grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; padding: 0 2rem 2rem;
+}
+.team-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 1.5rem 1rem; background: var(--cream); border: 1px solid var(--border);
+  border-bottom: 3px solid var(--navy);
+  transition: border-bottom-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  animation: teamCardIn 0.35s ease both;
+}
+@keyframes teamCardIn {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.team-card:hover { border-bottom-color: var(--gold); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(15,31,61,0.1); }
+.team-card__avatar-wrap {
+  width: 5rem; height: 5rem; border-radius: 50%; overflow: hidden;
+  margin-bottom: 1rem; border: 2px solid var(--border);
+  box-shadow: 0 2px 10px rgba(15,31,61,0.12); flex-shrink: 0;
+}
+.team-card__img { width:100%; height:100%; object-fit:cover; display:block; }
+.team-card__initials {
+  width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700;
+}
+.team-card__info { display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
+.team-card__name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:600; color:var(--navy); line-height:1.3; }
+.team-card__role {
+  font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--gold); background:rgba(184,146,42,0.1); border:1px solid rgba(184,146,42,0.25);
+  padding:0.15rem 0.5rem; border-radius:2px;
+}
+@media (max-width:600px) {
+  .team-modal__grid { grid-template-columns:repeat(2,1fr); padding:0 1.25rem 1.5rem; }
+  .team-modal__header { padding:1.25rem 1.25rem 1rem; }
+  .team-modal__rule { margin:0 1.25rem 1.5rem; }
+}
+@media (max-width:380px) { .team-modal__grid { grid-template-columns:1fr; } }
 </style>
