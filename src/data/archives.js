@@ -1,386 +1,506 @@
+export const categories = [
+  { id: "all", label: "All" },
+  { id: "pure", label: "Pure Mathematics" },
+  { id: "applied", label: "Applied Mathematics" },
+  { id: "education", label: "Mathematics Education" },
+  { id: "supporting", label: "Supporting Courses" },
+];
+
+export const years = [
+  { id: "all", label: "All Years" },
+  { id: "1", label: "1st Year · Foundation" },
+  { id: "2", label: "2nd Year · Expanding" },
+  { id: "3", label: "3rd Year · Advanced" },
+  { id: "4", label: "4th Year · Specialization" },
+];
+
 export const archives = [
   // ─── FIRST YEAR · PURE MATHEMATICS ───────────────────────────────────────
   {
     title: "Elementary Algebra",
     description:
-      "Foundations of algebra including equations, polynomials, rational and radical expressions.",
-    url: "#",
+      "Linear equations and inequalities, systems of equations, polynomials, rational and radical expressions and equations.",
+    url: "https://open.umn.edu/opentextbooks/textbooks/13",
     image: "",
     category: "pure",
     year: "1",
-    topics: [
-      {
-        title: "Elementary Algebra",
-        link: "https://open.umn.edu/opentextbooks/textbooks/13",
-      },
-      {
-        title: "Linear Equations & Inequalities",
-        link: "https://www.khanacademy.org/test-prep/v2-sat-math/x0fcc98a58ba3bea7:algebra-easier/x0fcc98a58ba3bea7:solving-linear-equations-and-inequalities-easier/a/v2-sat-lesson-solving-linear-equations-and-inequalities",
-      },
-      {
-        title: "Systems of Linear Equations",
-        link: "https://math.libretexts.org/Bookshelves/Algebra/Algebra_and_Trigonometry_1e_(OpenStax)/11%3A_Systems_of_Equations_and_Inequalities/11.01%3A_Systems_of_Linear_Equations_-_Two_Variables",
-      },
-      {
-        title: "Polynomials",
-        link: "https://www.scribd.com/document/582562175/Polynomials-By-Trockers-1",
-      },
-      {
-        title: "Rational Expressions",
-        link: "https://2012books.lardbucket.org/pdfs/beginning-algebra/s10-rational-expressions-and-equat.pdf",
-      },
-      {
-        title: "Radical Expressions",
-        link: "https://2012books.lardbucket.org/books/beginning-algebra/s11-radical-expressions-and-equati.html",
-      },
-    ],
   },
-
   {
     title: "Intermediate Algebra",
     description:
-      "Advanced algebra including quadratic functions, exponential/logarithmic functions, and sequences.",
-    url: "#",
+      "Quadratic equations, functions and their graphs, inverse and composite functions, exponential and logarithmic functions, sequences and series.",
+    url: "https://open.umn.edu/opentextbooks/textbooks/134",
     image: "",
     category: "pure",
     year: "1",
-    topics: [
-      {
-        title: "Intermediate Algebra",
-        link: "https://open.umn.edu/opentextbooks/textbooks/134",
-      },
-      {
-        title: "Quadratic Equations",
-        link: "https://www.khanacademy.org/math/algebra-home/alg-quadratics",
-      },
-      {
-        title: "Functions (Domain & Range)",
-        link: "https://study.com/academy/lesson/what-is-domain-and-range-in-a-function.html",
-      },
-      {
-        title: "Inverse Functions",
-        link: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:functions/x2ec2f6f830c9fb89:inverse-functions",
-      },
-      {
-        title: "Exponential & Logarithmic Functions",
-        link: "https://www.khanacademy.org/math/algebra2/exponential-and-logarithmic-functions",
-      },
-      {
-        title: "Sequences & Series",
-        link: "https://www.khanacademy.org/math/algebra/sequences",
-      },
-    ],
   },
-
   {
     title: "Plane Euclidean Geometry",
     description:
-      "Fundamental geometry concepts, shapes, and proofs.",
-    url: "#",
+      "Basic postulates, triangles, quadrilaterals, polygons, circles, and geometric proofs with logical reasoning.",
+    url: "https://openstax.org/details/books/geometry",
     image: "",
     category: "pure",
     year: "1",
-    topics: [
-      {
-        title: "Plane Geometry",
-        link: "https://openstax.org/details/books/geometry",
-      },
-      {
-        title: "Basic Terms & Postulates",
-        link: "https://www.khanacademy.org/math/geometry/hs-geo-foundations",
-      },
-      {
-        title: "Triangles",
-        link: "https://www.khanacademy.org/math/geometry/hs-geo-triangles",
-      },
-      {
-        title: "Quadrilaterals & Polygons",
-        link: "https://www.khanacademy.org/math/geometry/hs-geo-quadrilaterals",
-      },
-      {
-        title: "Circles",
-        link: "https://www.khanacademy.org/math/geometry/hs-geo-circles",
-      },
-      {
-        title: "Geometric Proofs",
-        link: "https://www.khanacademy.org/math/geometry/hs-geo-proofs",
-      },
-    ],
   },
-
   {
     title: "Analytic Geometry (Basics)",
     description:
-      "Coordinate systems, lines, and conic sections.",
-    url: "#",
+      "Cartesian coordinate system, distance and midpoint formulas, equations of lines, parallel and perpendicular lines, and introduction to conic sections.",
+    url: "https://www.khanacademy.org/math/geometry-home/analytic-geometry-topic",
     image: "",
     category: "pure",
     year: "1",
-    topics: [
-      {
-        title: "Analytic Geometry Basics",
-        link: "https://www.khanacademy.org/math/geometry-home/analytic-geometry-topic",
-      },
-      {
-        title: "Cartesian Plane",
-        link: "https://www.khanacademy.org/math/basic-geo/basic-geo-coordinates",
-      },
-      {
-        title: "Distance & Midpoint",
-        link: "https://www.khanacademy.org/math/algebra-home/alg-linear-equations/alg-distance-and-midpoints",
-      },
-      {
-        title: "Equations of Lines",
-        link: "https://www.khanacademy.org/math/algebra/linear-equations",
-      },
-      {
-        title: "Parallel & Perpendicular Lines",
-        link: "https://www.khanacademy.org/math/geometry/hs-geo-analytic-geometry/hs-geo-parallel-and-perpendicular",
-      },
-      {
-        title: "Conic Sections",
-        link: "https://www.khanacademy.org/math/precalculus/conic-sections",
-      },
-    ],
   },
-
   {
     title: "Pre-Calculus",
     description:
-      "Trigonometry, identities, and advanced function representations.",
-    url: "#",
+      "Trigonometric functions, inverse trig functions, trigonometric equations, applications to triangles and bearings, polar coordinates and parametric equations.",
+    url: "https://www.khanacademy.org/math/precalculus",
     image: "",
     category: "pure",
     year: "1",
-    topics: [
-      {
-        title: "Trigonometry",
-        link: "https://www.khanacademy.org/math/trigonometry",
-      },
-      {
-        title: "Inverse Trigonometric Functions",
-        link: "https://www.khanacademy.org/math/trigonometry/inverse-trig-functions",
-      },
-      {
-        title: "Trigonometric Equations",
-        link: "https://www.khanacademy.org/math/trigonometry/trig-equations-and-identities",
-      },
-      {
-        title: "Applications of Trigonometry",
-        link: "https://www.khanacademy.org/math/trigonometry/solving-triangles",
-      },
-      {
-        title: "Polar Coordinates",
-        link: "https://www.khanacademy.org/math/precalculus/parametric-equations-and-polar-coordinates",
-      },
-    ],
   },
 
-  // ─── FIRST YEAR · APPLIED ────────────────────────────────────────────────
+  // ─── FIRST YEAR · APPLIED MATHEMATICS ────────────────────────────────────
   {
     title: "Basic Statistics & Probability",
     description:
-      "Introduction to statistical thinking and probability.",
-    url: "#",
+      "Descriptive statistics, measures of dispersion, graphical data representation, probability rules, and counting principles including permutations and combinations.",
+    url: "https://openstax.org/details/books/introductory-statistics",
     image: "",
     category: "applied",
     year: "1",
-    topics: [
-      {
-        title: "Introductory Statistics",
-        link: "https://openstax.org/details/books/introductory-statistics",
-      },
-      {
-        title: "Mean, Median, Mode",
-        link: "https://www.mathsisfun.com/data/mean-median-mode.html",
-      },
-      {
-        title: "Standard Deviation",
-        link: "https://www.mathsisfun.com/data/standard-deviation.html",
-      },
-      {
-        title: "Graphs",
-        link: "https://www.mathsisfun.com/data/data-graphs.html",
-      },
-      {
-        title: "Probability Basics",
-        link: "https://www.probabilitycourse.com/chapter1/1_1_1_sample_space.php",
-      },
-      {
-        title: "Permutations & Combinations",
-        link: "https://www.mathsisfun.com/combinatorics/combinations-permutations.html",
-      },
-    ],
   },
 
-  // ─── FIRST YEAR · EDUCATION ──────────────────────────────────────────────
+  // ─── FIRST YEAR · MATHEMATICS EDUCATION ──────────────────────────────────
   {
     title: "Introduction to Teaching",
     description:
-      "Foundations of teaching profession and education systems.",
-    url: "#",
+      "Roles and ethics of the teaching profession, historical and philosophical foundations of education, the Philippine educational system, and current trends.",
+    url: "https://www.thoughtco.com/an-introduction-to-teaching-8007",
     image: "",
     category: "education",
     year: "1",
-    topics: [
-      { title: "Teaching Intro", link: "https://www.thoughtco.com" },
-      {
-        title: "Roles & Responsibilities",
-        link: "https://www.slideshare.net/guest3c2b6c/roles-and-responsibilities-of-a-teacher",
-      },
-      {
-        title: "Educational Philosophy",
-        link: "https://www.simplypsychology.org/educational-philosophies.html",
-      },
-      {
-        title: "DepEd System",
-        link: "https://www.deped.gov.ph/about-deped/",
-      },
-      {
-        title: "UNESCO Trends",
-        link: "https://www.unesco.org/en/education",
-      },
-    ],
   },
-
   {
     title: "Principles of Education",
     description:
-      "Learning theories and classroom practices.",
-    url: "#",
+      "Learning theories (behaviorism, cognitivism, constructivism, humanism), effective teaching principles, classroom management, and student diversity.",
+    url: "https://www.21kschool.com/us/blog/principles-of-education/",
     image: "",
     category: "education",
     year: "1",
-    topics: [
-      {
-        title: "Learning Theories",
-        link: "https://www.simplypsychology.org/learning-theories.html",
-      },
-      {
-        title: "Teaching Principles",
-        link: "https://teaching.unl.edu/teaching-resources/principles-of-effective-teaching/",
-      },
-      {
-        title: "Classroom Management",
-        link: "https://www.edutopia.org/article/classroom-management-research-based-strategies",
-      },
-      {
-        title: "Student Diversity",
-        link: "https://www.edutopia.org/article/teaching-diverse-classroom",
-      },
-    ],
   },
-
   {
     title: "Child & Adolescent Development",
     description:
-      "Developmental psychology for education.",
-    url: "#",
+      "Physical, cognitive, social, and emotional development across developmental stages, influencing factors, and implications for educational practice.",
+    url: "https://courses.lumenlearning.com/suny-lifespandevelopment/",
     image: "",
     category: "education",
     year: "1",
-    topics: [
-      {
-        title: "Development Domains",
-        link: "https://courses.lumenlearning.com/suny-lifespandevelopment/",
-      },
-      {
-        title: "Piaget Theory",
-        link: "https://www.simplypsychology.org/piaget.html",
-      },
-      {
-        title: "Ecological Systems",
-        link: "https://www.simplypsychology.org/ecological-systems-theory.html",
-      },
-      {
-        title: "Learning Science",
-        link: "https://www.edutopia.org/article/applying-learning-science-classroom",
-      },
-    ],
   },
 
-  // ─── FIRST YEAR · SUPPORTING ─────────────────────────────────────────────
+  // ─── FIRST YEAR · SUPPORTING COURSES ─────────────────────────────────────
   {
     title: "Communication Skills",
     description:
-      "English and Filipino communication and technical writing.",
-    url: "#",
+      "English and Filipino communication covering listening, speaking, reading, writing, and technical report preparation.",
+    url: "https://www.skillsyouneed.com/ips/communication-skills.html",
     image: "",
     category: "supporting",
     year: "1",
-    topics: [
-      {
-        title: "General Communication",
-        link: "https://www.skillsyouneed.com/ips/communication-skills.html",
-      },
-      {
-        title: "English Skills",
-        link: "https://learnenglish.britishcouncil.org/skills",
-      },
-      {
-        title: "Filipino Communication",
-        link: "https://filipiknow.net/filipino-subject/",
-      },
-      {
-        title: "Technical Writing",
-        link: "https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/index.html",
-      },
-    ],
   },
-
   {
     title: "Natural Sciences",
     description:
-      "Physics, chemistry, and earth science foundations.",
-    url: "#",
+      "Basic physics, chemistry, and earth science covering motion, energy, matter, elements, compounds, and earth's structure and processes.",
+    url: "https://www.britannica.com/science/natural-science",
     image: "",
     category: "supporting",
     year: "1",
-    topics: [
-      {
-        title: "Physics",
-        link: "https://www.physicsclassroom.com/Physics-Tutorial",
-      },
-      {
-        title: "Chemistry",
-        link: "https://www.chemguide.co.uk/",
-      },
-      {
-        title: "Earth Science",
-        link: "https://www.nationalgeographic.org/education/earth-science/",
-      },
-    ],
   },
-
   {
     title: "Computer Fundamentals",
     description:
-      "Basic computing, productivity tools, and internet safety.",
-    url: "#",
+      "Hardware and software basics, operating systems, file management, word processing, spreadsheets, presentations, and internet safety.",
+    url: "https://edu.gcfglobal.org/en/computerbasics/",
     image: "",
     category: "supporting",
     year: "1",
-    topics: [
-      {
-        title: "Computer Basics",
-        link: "https://edu.gcfglobal.org/en/computerbasics/",
-      },
-      {
-        title: "Hardware",
-        link: "https://edu.gcfglobal.org/en/computerbasics/inside-a-computer/1/",
-      },
-      {
-        title: "Operating Systems",
-        link: "https://edu.gcfglobal.org/en/basic-computer-skills/understanding-operating-systems/1/",
-      },
-      {
-        title: "Office Tools",
-        link: "https://edu.gcfglobal.org/en/topics/office/",
-      },
-      {
-        title: "Internet Safety",
-        link: "https://edu.gcfglobal.org/en/internetsafety/",
-      },
-    ],
+  },
+
+  // ─── SECOND YEAR · PURE MATHEMATICS ──────────────────────────────────────
+  {
+    title: "Advanced Algebra",
+    description:
+      "Matrices, systems of linear equations using matrix methods and Cramer's rule, complex numbers, polynomial functions, and polynomial/rational/absolute value inequalities.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "2",
+  },
+  {
+    title: "Solid Geometry",
+    description:
+      "3D shapes including prisms, pyramids, cylinders, cones and spheres; surface area, volume, spatial relationships, and coordinate geometry in three dimensions.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "2",
+  },
+  {
+    title: "Differential Calculus",
+    description:
+      "Limits, continuity, differentiation rules, derivatives of trig/exponential/logarithmic functions, and applications including optimization and curve sketching.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "2",
+  },
+  {
+    title: "Linear Algebra",
+    description:
+      "Vector spaces, linear transformations, eigenvalues and eigenvectors, inner product spaces, and orthogonality.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "2",
+  },
+
+  // ─── SECOND YEAR · APPLIED MATHEMATICS ───────────────────────────────────
+  {
+    title: "Inferential Statistics",
+    description:
+      "Sampling techniques, estimation, hypothesis testing (z-tests, t-tests, chi-square, ANOVA), and simple linear regression and correlation.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "2",
+  },
+  {
+    title: "Discrete Mathematics",
+    description:
+      "Set theory, propositional and predicate logic, combinatorics, recurrence relations, and Boolean algebra and logic gates.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "2",
+  },
+
+  // ─── SECOND YEAR · MATHEMATICS EDUCATION ─────────────────────────────────
+  {
+    title: "Pedagogy of Mathematics I",
+    description:
+      "Teaching strategies for basic math, lesson planning, instructional materials development, questioning techniques, and differentiated instruction.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "2",
+  },
+  {
+    title: "Educational Technology",
+    description:
+      "Technology integration in math teaching, educational software (GeoGebra, Desmos, Excel), digital platforms, and designing technology-enhanced learning activities.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "2",
+  },
+  {
+    title: "Assessment & Evaluation",
+    description:
+      "Principles of assessment, types of assessment (formative, summative, diagnostic, authentic), designing tools, grading, and using data to improve teaching.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "2",
+  },
+
+  // ─── SECOND YEAR · SUPPORTING COURSES ────────────────────────────────────
+  {
+    title: "Programming for Mathematics",
+    description:
+      "Programming fundamentals, introduction to Python or C++, mathematical computations including equation solving and graph plotting, and basic algorithms.",
+    url: "#",
+    image: "",
+    category: "supporting",
+    year: "2",
+  },
+  {
+    title: "General Physics",
+    description:
+      "Mechanics, thermodynamics, waves and optics, electromagnetism, and mathematical applications in physics.",
+    url: "#",
+    image: "",
+    category: "supporting",
+    year: "2",
+  },
+
+  // ─── THIRD YEAR · PURE MATHEMATICS ───────────────────────────────────────
+  {
+    title: "Integral Calculus",
+    description:
+      "Indefinite and definite integrals, integration techniques, the Fundamental Theorem of Calculus, applications to areas and volumes, and improper integrals.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "3",
+  },
+  {
+    title: "Multivariable Calculus",
+    description:
+      "Functions of several variables, partial derivatives, multiple integrals, line and surface integrals, and Green's, Stokes', and Divergence theorems.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "3",
+  },
+  {
+    title: "Abstract Algebra",
+    description:
+      "Groups, cyclic and permutation groups, homomorphisms and isomorphisms, rings, and fields with definitions, examples, and properties.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "3",
+  },
+  {
+    title: "Real Analysis",
+    description:
+      "Real number system, sequences, series and convergence tests, continuity, differentiability, and integrability of real-valued functions.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "3",
+  },
+  {
+    title: "Number Theory",
+    description:
+      "Divisibility, prime numbers, congruences, Diophantine equations, number systems, and applications in cryptography.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "3",
+  },
+
+  // ─── THIRD YEAR · APPLIED MATHEMATICS ────────────────────────────────────
+  {
+    title: "Mathematical Statistics",
+    description:
+      "Probability distributions (discrete and continuous), sampling distributions, estimation theory, hypothesis testing power, and experimental design.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "3",
+  },
+  {
+    title: "Mathematical Modeling",
+    description:
+      "Model formulation, deterministic and stochastic model types, model analysis and validation, and applications across physical, social, and engineering domains.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "3",
+  },
+  {
+    title: "Graph Theory",
+    description:
+      "Graphs, trees and spanning trees, paths and connectivity, graph coloring, and applications in networks, scheduling, and routing.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "3",
+  },
+
+  // ─── THIRD YEAR · MATHEMATICS EDUCATION ──────────────────────────────────
+  {
+    title: "Pedagogy of Mathematics II",
+    description:
+      "Teaching advanced math topics, developing problem-solving skills, mathematical communication, teaching students with special needs, and real-world integration.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "3",
+  },
+  {
+    title: "Curriculum Design in Mathematics",
+    description:
+      "Curriculum design principles, K-12 mathematics curriculum in the Philippines, curriculum alignment, designing learning modules, and curriculum evaluation.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "3",
+  },
+  {
+    title: "Inclusive Education in Math",
+    description:
+      "Principles of inclusive education, identifying and addressing learning difficulties, adapting instruction for diverse learners, and promoting equity in mathematics.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "3",
+  },
+  {
+    title: "History & Philosophy of Mathematics",
+    description:
+      "Evolution of mathematical concepts, contributions of major mathematicians, philosophical foundations (logicism, formalism, intuitionism), and the cultural role of mathematics.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "3",
+  },
+
+  // ─── THIRD YEAR · SUPPORTING COURSES ─────────────────────────────────────
+  {
+    title: "Advanced Computer-Aided Mathematics",
+    description:
+      "Advanced use of GeoGebra, MATLAB, or R for modeling, data analysis, interactive materials creation, and advanced mathematical computations.",
+    url: "#",
+    image: "",
+    category: "supporting",
+    year: "3",
+  },
+  {
+    title: "Non-Euclidean Geometry (Elective)",
+    description:
+      "Spherical geometry, hyperbolic geometry, and basic properties of non-Euclidean systems.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "3",
+  },
+  {
+    title: "Differential Equations (Elective)",
+    description:
+      "Ordinary differential equations, first-order equations, and linear systems.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "3",
+  },
+  {
+    title: "Operations Research (Elective)",
+    description:
+      "Linear programming, transportation problems, and assignment problems.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "3",
+  },
+  {
+    title: "Cryptography (Elective)",
+    description:
+      "Basic principles of cryptography, encryption, and decryption techniques.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "3",
+  },
+
+  // ─── FOURTH YEAR · PURE MATHEMATICS ──────────────────────────────────────
+  {
+    title: "Complex Analysis",
+    description:
+      "Complex functions, analytic functions, contour integrals, and the residue theorem.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "4",
+  },
+  {
+    title: "Functional Analysis",
+    description:
+      "Normed spaces, Banach spaces, Hilbert spaces, and linear operators.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "4",
+  },
+  {
+    title: "Partial Differential Equations",
+    description:
+      "Partial differential equations, boundary value problems, and their applications.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "4",
+  },
+  {
+    title: "Topology (Elective)",
+    description:
+      "Basic concepts of point-set topology, continuity, and connectedness.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "4",
+  },
+  {
+    title: "Algebraic Geometry (Elective)",
+    description:
+      "Introduction to algebraic varieties and algebraic equations.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "4",
+  },
+  {
+    title: "Advanced Number Theory (Elective)",
+    description:
+      "Advanced topics including algebraic number theory and analytic number theory.",
+    url: "#",
+    image: "",
+    category: "pure",
+    year: "4",
+  },
+
+  // ─── FOURTH YEAR · APPLIED MATHEMATICS ───────────────────────────────────
+  {
+    title: "Advanced Probability & Statistics",
+    description:
+      "Multivariate probability distributions, Bayesian statistics, nonparametric statistics, time series analysis, and statistical software (R or SPSS).",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "4",
+  },
+  {
+    title: "Operations Research Basics",
+    description:
+      "Linear programming (simplex method, duality), network analysis (PERT/CPM), inventory theory, and decision theory under uncertainty and risk.",
+    url: "#",
+    image: "",
+    category: "applied",
+    year: "4",
+  },
+
+  // ─── FOURTH YEAR · MATHEMATICS EDUCATION ─────────────────────────────────
+  {
+    title: "Research in Mathematics Education",
+    description:
+      "Research methods (quantitative, qualitative, mixed), research designs, data collection and analysis, and writing research proposals and reports.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "4",
+  },
+  {
+    title: "Seminar in Math Education",
+    description:
+      "Current trends and issues in mathematics education, presentation of research findings, best teaching practices, and professional development.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "4",
+  },
+  {
+    title: "Student Teaching (Field Practice)",
+    description:
+      "Classroom observation, lesson planning and implementation, classroom management, student assessment, reflection, and collaboration with mentor teachers.",
+    url: "#",
+    image: "",
+    category: "education",
+    year: "4",
   },
 ];
